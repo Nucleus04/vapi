@@ -1,0 +1,147 @@
+{
+  "name": "User Checker",
+  "firstMessage": "Welcome to vincent customer service. How are you today?",
+  "model": {
+    "provider": "openai",
+    "model": "gpt-4",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a voice assistant for checking username and updating their data on companies database. You need to ask them some of their personal data to update and verify. First ask them if their name exist on database. If yes, then go ahead and ask their birthday to update it, if not then say farewell. After updating their birthday, now ask them for their zip code so you can update it also on database."
+      }
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Checking the database for existing accounts."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry , there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay in check our database.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "verify_user",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "firstname": {
+                "type": "string"
+              },
+              "lastname": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Retrieves the user from database."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/verify_name"
+        }
+      },
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Updating your birthday on your account."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry , there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay updating your birthday.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "birthday_update",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "birthday": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Updates birthday of customer."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/birthdayUpdate"
+        }
+      },
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Checking your zip code..."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry , there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay veiriying and updating your zip code.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "zipcode_update",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "zipcode": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Verify and update zipcode."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/zipCodeUpdate"
+        }
+      }
+    ]
+  },
+  "voice": {
+    "inputPreprocessingEnabled": true,
+    "inputReformattingEnabled": true,
+    "inputMinCharacters": 30,
+    "inputPunctuationBoundaries": [
+      "。",
+      "，",
+      ".",
+      "!",
+      "?",
+      ";",
+      ")",
+      "،",
+      "۔",
+      "।",
+      "॥",
+      "|",
+      "||",
+      ",",
+      ":"
+    ],
+    "fillerInjectionEnabled": true,
+    "provider": "azure",
+    "voiceId": "andrew",
+    "speed": 1.25
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "message": {
+    "type": "tool-calls",
+    "toolCalls": [
+      {
+        "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+        "type": "function",
+        "function": {
+          "name": "birthday_update",
+          "arguments": {
+            "birthday": "2009-06-04"
+          }
+        }
+      }
+    ],
+    "toolCallList": [
+      {
+        "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+        "type": "function",
+        "function": {
+          "name": "birthday_update",
+          "arguments": {
+            "birthday": "2009-06-04"
+          }
+        }
+      }
+    ],
+    "toolWithToolCallList": [
+      {
+        "type": "function",
+        "function": {
+          "name": "birthday_update",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "birthday": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Updates birthday of customer."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/birthdayUpdate"
+        },
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Updating your birthday on your account."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry , there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay updating your birthday.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "toolCall": {
+          "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+          "type": "function",
+          "function": {
+            "name": "birthday_update",
+            "arguments": {
+              "birthday": "2009-06-04"
+            }
+          }
+        }
+      }
+    ],
+    "call": {
+      "id": "aa6b5698-1ff7-4ebd-9aa3-837c439a61ba",
+      "orgId": "a1cc6a0c-b77c-4812-81bc-fdd1c2465708",
+      "createdAt": "2024-06-18T22:28:30.743Z",
+      "updatedAt": "2024-06-18T22:28:30.743Z",
+      "type": "webCall",
+      "status": "queued",
+      "assistantId": "73ace639-fdd8-4d88-ba3b-6a531b7f1c8a",
+      "webCallUrl": "https://vapi.daily.co/PCMAyHP1njm8RXrtVWih"
+    },
+    "artifact": {
+      "messages": [
+        {
+          "role": "bot",
+          "message": "Welcome to Vincent customer service. How are you today?",
+          "time": 1718749718286,
+          "endTime": 1718749721096,
+          "secondsFromStart": 1.1999999,
+          "source": ""
+        },
+        {
+          "role": "user",
+          "message": "I'm good. Thank you.",
+          "time": 1718749723066,
+          "endTime": 1718749724066,
+          "secondsFromStart": 5.98,
+          "duration": 3.96
+        },
+        {
+          "role": "bot",
+          "message": "Glad to like hear that. May I have your first and last name to, um, check if you exist in our database?",
+          "time": 1718749725396,
+          "endTime": 1718749730185.999,
+          "secondsFromStart": 8.31,
+          "source": ""
+        },
+        {
+          "role": "user",
+          "message": "And then James Smith.",
+          "time": 1718749731076,
+          "endTime": 1718749733006,
+          "secondsFromStart": 13.99,
+          "duration": 1.8699999
+        },
+        {
+          "toolCalls": [
+            {
+              "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+              "type": "function",
+              "function": {
+                "name": "verify_user",
+                "arguments": "{\"lastname\": \"Smith\", \"firstname\": \"James\"}"
+              }
+            }
+          ],
+          "role": "tool_calls",
+          "message": "",
+          "time": 1718749732875,
+          "secondsFromStart": 15.928
+        },
+        {
+          "role": "bot",
+          "message": "Checking the database for existing accounts.",
+          "time": 1718749733935.998,
+          "endTime": 1718749736035.999,
+          "secondsFromStart": 16.849998,
+          "source": ""
+        },
+        {
+          "role": "tool_call_result",
+          "time": 1718749735126,
+          "secondsFromStart": 18.179,
+          "name": "verify_user",
+          "result": "Your name exist in our database.",
+          "toolCallId": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ"
+        },
+        {
+          "role": "bot",
+          "message": "Great. Your name exists in our database. Let's proceed with the next steps. Can you provide your zip code so I can Updated?",
+          "time": 1718749737246.002,
+          "endTime": 1718749744606,
+          "secondsFromStart": 20.160002,
+          "source": ""
+        },
+        {
+          "role": "user",
+          "message": "Yeah. Sure. My ZIP code is 2 3 1",
+          "time": 1718749745955.999,
+          "endTime": 1718749748236,
+          "secondsFromStart": 28.869999,
+          "duration": 2.4400005
+        },
+        {
+          "toolCalls": [
+            {
+              "id": "call_ehctQtT2hwWwbdZPuawMDzEf",
+              "type": "function",
+              "function": {
+                "name": "zipcode_update",
+                "arguments": "{\"zipcode\": \"231\"}"
+              }
+            }
+          ],
+          "role": "tool_calls",
+          "message": "",
+          "time": 1718749748907,
+          "secondsFromStart": 31.96
+        },
+        {
+          "role": "bot",
+          "message": "Checking your zip code.",
+          "time": 1718749749966,
+          "endTime": 1718749751166,
+          "secondsFromStart": 32.88,
+          "source": ""
+        },
+        {
+          "role": "tool_call_result",
+          "time": 1718749750182,
+          "secondsFromStart": 33.235,
+          "name": "zipcode_update",
+          "result": "Your zip code updated successfully.",
+          "toolCallId": "call_ehctQtT2hwWwbdZPuawMDzEf"
+        },
+        {
+          "role": "bot",
+          "message": "Your zip code has been successfully updated. Now you all provide your birthday so I can update it as well?",
+          "time": 1718749753566.003,
+          "endTime": 1718749758996,
+          "secondsFromStart": 36.480003,
+          "source": ""
+        },
+        {
+          "role": "user",
+          "message": "My birthday is June 4 2009.",
+          "time": 1718749760266,
+          "endTime": 1718749762756,
+          "secondsFromStart": 43.18,
+          "duration": 4.0899963
+        },
+        {
+          "role": "bot",
+          "message": "Great.",
+          "time": 1718749761636,
+          "endTime": 1718749762136,
+          "secondsFromStart": 44.55,
+          "source": ""
+        },
+        {
+          "toolCalls": [
+            {
+              "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+              "type": "function",
+              "function": {
+                "name": "birthday_update",
+                "arguments": "{\"birthday\": \"2009-06-04\"}"
+              }
+            }
+          ],
+          "role": "tool_calls",
+          "message": "",
+          "time": 1718749762551,
+          "secondsFromStart": 45.604
+        }
+      ],
+      "messagesOpenAIFormatted": [
+        {
+          "role": "assistant",
+          "content": "Welcome to Vincent customer service. How are you today?"
+        },
+        {
+          "role": "user",
+          "content": "I'm good. Thank you."
+        },
+        {
+          "role": "assistant",
+          "content": "Glad to like hear that. May I have your first and last name to, um, check if you exist in our database?"
+        },
+        {
+          "role": "user",
+          "content": "And then James Smith."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "type": "function",
+              "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+              "function": {
+                "name": "verify_user",
+                "arguments": "{\"lastname\": \"Smith\", \"firstname\": \"James\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+          "content": "Your name exist in our database."
+        },
+        {
+          "role": "assistant",
+          "content": "Checking the database for existing accounts."
+        },
+        {
+          "role": "assistant",
+          "content": "Great. Your name exists in our database. Let's proceed with the next steps. Can you provide your zip code so I can Updated?"
+        },
+        {
+          "role": "user",
+          "content": "Yeah. Sure. My ZIP code is 2 3 1"
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "type": "function",
+              "id": "call_ehctQtT2hwWwbdZPuawMDzEf",
+              "function": {
+                "name": "zipcode_update",
+                "arguments": "{\"zipcode\": \"231\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_ehctQtT2hwWwbdZPuawMDzEf",
+          "content": "Your zip code updated successfully."
+        },
+        {
+          "role": "assistant",
+          "content": "Checking your zip code."
+        },
+        {
+          "role": "assistant",
+          "content": "Your zip code has been successfully updated. Now you all provide your birthday so I can update it as well?"
+        },
+        {
+          "role": "user",
+          "content": "My birthday is June 4 2009."
+        },
+        {
+          "role": "assistant",
+          "content": "Great."
+        },
+        {
+          "role": "assistant",
+          "content": "",
+          "tool_calls": [
+            {
+              "type": "function",
+              "id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+              "function": {
+                "name": "birthday_update",
+                "arguments": "{\"birthday\": \"2009-06-04\"}"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "tool_call_id": "call_jtmZ7CTTSRvKC0mJNzQWWjJZ",
+          "content": "Your name exist in our database."
+        }
+      ]
+    },
+    "timestamp": "2024-06-18T22:29:22.556Z"
+  }
+}
