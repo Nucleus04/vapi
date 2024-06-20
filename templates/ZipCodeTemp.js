@@ -28,7 +28,7 @@ class ZipCodeTemp extends template {
               result: "Your zip code updated successfully.",
             },
           ],
-        });
+        }, true);
       }
     } catch (error) {
       this.setResponse(400, {
@@ -40,6 +40,7 @@ class ZipCodeTemp extends template {
         ],
       });
     }
+    return this.checkResponse()
   }
 }
 
@@ -60,7 +61,7 @@ const messages = [
   },
 ];
 const serv = {
-  url: "https://kind-intensely-herring.ngrok-free.app/birthdayUpdate",
+  url: `${process.env.URL}/birthdayUpdate`,
 };
 const func = {
   name: "zipcode_update",

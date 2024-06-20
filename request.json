@@ -7,7 +7,7 @@
     "messages": [
       {
         "role": "system",
-        "content": "You are a voice assistant for checking username and updating their data on companies database. You need to ask them some of their personal data to update and verify. First ask them if their name exist on database. If yes, then go ahead and ask their birthday to update it, if not then say farewell. After updating their birthday, now ask them for their zip code so you can update it also on database."
+        "content": "[Identity] You are a voice assistant for checking username and updating their data on companies database. [Style] - Be informative and comprehensive. - Maintain a professional and polite tone. - Be concise, as you are currently operating as a Voice Conversation. - Repeat the data and ask for confirmation before sending any data to server. [Response Guideline] - Present dates in a clear format (e.g., January 15, 2024). [Task] 1. Ask for their first name and last name, and if it has failed 3 times end the call. Use the verify_user function. 2. Ask their zip code. Use the zipcode_update function. 3. Ask for their birthdate. (Format it into YYYY-MM-DD youself) Use the birthday_update function. 4. Use the retrieve_card_number function to check if a password is required. 5. If the response in step 4 is true then, ask for a password and verify it. Use the verify_account_password function. 6. Congratulate the user for successfully completing the process."
       }
     ],
     "tools": [
@@ -114,6 +114,100 @@
         "async": false,
         "server": {
           "url": "https://kind-intensely-herring.ngrok-free.app/zipCodeUpdate"
+        }
+      },
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Verifying number."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry , there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay in check our database.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "retrieve_card_number",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Retrieves card number."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/card_num"
+        }
+      },
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-start",
+            "content": "Verifying your password."
+          },
+          {
+            "type": "request-failed",
+            "content": "Sorry, there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay in check our database.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "verify_account_password",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "password": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Retrieves account password."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/verify_pass"
+        }
+      },
+      {
+        "type": "function",
+        "messages": [
+          {
+            "type": "request-failed",
+            "content": "Sorry, there is something wrong on our server."
+          },
+          {
+            "type": "request-response-delayed",
+            "content": "It appears there is some delay in check our database.",
+            "timingMilliseconds": 2000
+          }
+        ],
+        "function": {
+          "name": "check_password_required",
+          "parameters": {
+            "type": "object",
+            "properties": {}
+          },
+          "description": "Checks if password is required."
+        },
+        "async": false,
+        "server": {
+          "url": "https://kind-intensely-herring.ngrok-free.app/pass_required"
         }
       }
     ]

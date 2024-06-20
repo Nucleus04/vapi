@@ -6,9 +6,11 @@ class UsernameTemp extends template {
   constructor(async, server, messages, func) {
     super(async, server, messages, func);
   }
+
   parseRequest(requestBody) {
     let argument = requestBody.message.toolCalls[0].function.arguments;
     console.log(argument);
+    
     if (
       argument.firstname.toLowerCase() === FIRSTNAME.toLowerCase() &&
       argument.lastname.toLowerCase() === LASTNAME.toLowerCase()
@@ -20,9 +22,9 @@ class UsernameTemp extends template {
             result: "Your name exist in our database.",
           },
         ],
-      });
+      }, true);
     } else {
-      this.setResponse(400, {
+      this.setResponse(401, {
         results: [
           {
             toolCallId: requestBody.message.toolCalls[0].id,
@@ -31,6 +33,7 @@ class UsernameTemp extends template {
         ],
       });
     }
+    return this.checkResponse()
   }
 }
 
@@ -50,7 +53,7 @@ const messages = [
   },
 ];
 const serv = {
-  url: "https://kind-intensely-herring.ngrok-free.app/verify_name",
+  url: `${process.env.URL}/verify_name`,
 };
 const func = {
   name: "verify_user",
@@ -67,4 +70,5 @@ const func = {
   },
   description: "Retrieves the user from database.",
 };
+
 module.exports = new UsernameTemp(true, serv, messages, func);

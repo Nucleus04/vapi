@@ -6,6 +6,7 @@ class BirthdayTemp extends template {
   }
   parseRequest(requestBody) {
     try {
+      console.log(requestBody)
       let argument = requestBody.message.toolCalls[0].function.arguments;
       console.log(argument);
       this.setResponse(200, {
@@ -15,7 +16,7 @@ class BirthdayTemp extends template {
             result: "Your birthday updated successfully.",
           },
         ],
-      });
+      }, true);
     } catch (error) {
       console.log(error);
       this.setResponse(400, {
@@ -27,6 +28,7 @@ class BirthdayTemp extends template {
         ],
       });
     }
+    return this.checkResponse()
   }
 }
 
@@ -46,7 +48,7 @@ const messages = [
   },
 ];
 const serv = {
-  url: "https://kind-intensely-herring.ngrok-free.app/birthdayUpdate",
+  url: `${process.env.URL}/birthdayUpdate`,
 };
 const func = {
   name: "birthday_update",
